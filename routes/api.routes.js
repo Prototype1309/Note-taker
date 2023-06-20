@@ -19,7 +19,7 @@ module.exports = (app) => {
       res.json(JSON.parse(data));
     });
   });
-    // POST REQUEST
+  // POST REQUEST
   // Setup the /api/notes post route
   app.post("/api/notes", (req, res) => {
     // Receives a new note, adds it to the db.json file, returns the new note to the client
@@ -41,7 +41,7 @@ module.exports = (app) => {
       res.send(notesArr);
     });
   });
-      // DELETE REQUEST
+  // DELETE REQUEST
   // Setup the /api/notes/:id delete route
   app.delete("/api/notes/:id", (req, res) => {
     const deleteId = req.params.id;
@@ -59,3 +59,37 @@ module.exports = (app) => {
       res.send(notesArr);
     });
   });
+  // PUT REQUEST
+  // Setup the /api/notes/:id put route
+  app.put("/api/notes/:id", (req, res) => {
+    const editId = req.params.id;
+
+    fs.readFile("./db/db.json", "utf8", (err, data) => {
+      if (err) throw err;
+
+      let notesArr = JSON.parse(data);
+
+      let selectedNote = notesArr.find((note) => note.id === editId);
+
+      // check if found
+      if (selectedNote) {
+        let updatedNote = {
+          title: req.body.title, // set value of `title` get from req
+          text: req.body.text, // set value of `text` get from req
+          id: selectedNote.id,
+        };
+        //  find index at which the item is stored in the array
+        let targetIndex = notesArr.indexOf(selectedNote);
+
+        //  replace object data with `updatedNote` object
+        notesArr.splice(targetIndex, 1, updatedNote);
+
+        res.sendStatus(204);
+        editNote(notesArr);
+        res.json(notesArr);
+      } else {
+        res.sendStatus(404);
+      }
+    });
+  });
+};
