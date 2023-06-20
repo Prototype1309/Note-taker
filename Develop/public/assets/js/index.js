@@ -108,6 +108,23 @@ const handleNoteEdit = (event) => {
   event.stopPropagation();
   handleNoteView();
 
+  const note = event.target;
+  const noteId = JSON.parse(note.parentElement.getAttribute("data-note")).id;
+
+  if (activeNote.id === noteId) {
+    activeNote = {
+      title: noteTitle.value.trim(),
+      text: noteText.value.trim(),
+    };
+  }
+
+  editNote(noteId).then(() => {
+    saveNote(activeNote);
+    getAndRenderNotes();
+    renderActiveNote();
+  });
+};
+
 
 
 // Delete the clicked note
