@@ -102,6 +102,12 @@ const handleNoteSave = () => {
   });
 };
 
+// Edit the clicked note
+const handleNoteEdit = (event) => {
+  // prevents the click listener for the list from being called when the button inside of it is clicked
+  event.stopPropagation();
+  handleNoteView();
+
 
 
 // Delete the clicked note
