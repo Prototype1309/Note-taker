@@ -25,6 +25,8 @@ const hide = (elem) => {
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
+// a function for getting all notes from the db
+
 const getNotes = () =>
   fetch('/api/notes', {
     method: 'GET',
@@ -32,6 +34,8 @@ const getNotes = () =>
       'Content-Type': 'application/json',
     },
   });
+
+ // a function to save the note to the db 
 
 const saveNote = (note) =>
   fetch('/api/notes', {
@@ -42,6 +46,8 @@ const saveNote = (note) =>
     body: JSON.stringify(note),
   });
 
+ // a function to save the note to the db 
+
 const deleteNote = (id) =>
   fetch(`/api/notes/${id}`, {
     method: 'DELETE',
@@ -50,17 +56,29 @@ const deleteNote = (id) =>
     },
   });
 
+  // A function for editing a note from the db
+
+const editNote = (id) =>
+  fetch(`/api/notes/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }); 
+
+  // If there is an activeNote, display it, otherwise render empty inputs
+  
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
   if (activeNote.id) {
-    noteTitle.setAttribute('readonly', true);
-    noteText.setAttribute('readonly', true);
+    //noteTitle.setAttribute('readonly', true);
+    //noteText.setAttribute('readonly', true);
     noteTitle.value = activeNote.title;
     noteText.value = activeNote.text;
   } else {
-    noteTitle.removeAttribute('readonly');
-    noteText.removeAttribute('readonly');
+    //noteTitle.removeAttribute('readonly');
+    //noteText.removeAttribute('readonly');
     noteTitle.value = '';
     noteText.value = '';
   }
