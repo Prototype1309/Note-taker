@@ -44,7 +44,7 @@ npm install generate-unique-id  // for generate unique id dependencies
 
 ## Usage
 
-Click [**here**](https://note-taking-planner.herokuapp.com/) to view deployed application on Heroku.
+Click [**here**](https://takenotes2-6eb49beb017b.herokuapp.com/) to view deployed application on Heroku.
 
 ## Credits
 
