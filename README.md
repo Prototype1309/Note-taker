@@ -54,5 +54,5 @@ The application's front end was provided. To give the application its CRUD (crea
 
 Please use the contact information below if you would like to reach me with any questions.
 
-- Github Profile: [**@prototype=1394**](https://github.com/Prototype1309/Note-taker)
+- Github Profile: [**@prototype=1309**](https://github.com/Prototype1309/Note-taker)
 - Email: [**simo.hourri@gmail.com**]
