@@ -89,11 +89,20 @@ const handleNoteSave = () => {
     title: noteTitle.value,
     text: noteText.value,
   };
+
+ console.log(
+   `New Note Added! Title: ${JSON.stringify(
+     newNote.title
+   )}, Text: ${JSON.stringify(newNote.text)}`
+  );
+  
   saveNote(newNote).then(() => {
     getAndRenderNotes();
     renderActiveNote();
   });
 };
+
+
 
 // Delete the clicked note
 const handleNoteDelete = (e) => {
